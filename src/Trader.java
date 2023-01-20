@@ -7,8 +7,6 @@ public class Trader {
     }
 
     public enum Goods{
-        POTION,
-        ARMOR,
-        SWORD
+        POTION
     }
 }

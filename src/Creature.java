@@ -76,6 +76,6 @@ public class Creature {
 
     @Override
     public String toString(){
-        return String.format("%s health: %d", name, health);
+        return String.format("%s (health: %d)", name, health);
     }
 }
