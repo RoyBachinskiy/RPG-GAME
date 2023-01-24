@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Enter name:");
         try{
             command(br.readLine());
-        }catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
@@ -22,6 +22,7 @@ public class Main {
             player = new Hero(word, 100, 0, 20, 0,10);
             System.out.println(String.format("Появился герой по имени %s, готовый защищать обычных людей от монстров", word));
             printNavigationMenu();
+            command(br.readLine());
         }
         switch(word){
             case "2": {
