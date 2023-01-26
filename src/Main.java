@@ -53,11 +53,13 @@ public class Main {
 
     }
 
-    private static void startFinalFight() {
+    private static void startFinalFight() throws IOException{
         if(player.getExp() <= 20000){
             System.out.println("Вам не хватает опыта, потренируйтесь еще.");
             System.out.printf("Осталось набрать %d ед. опыта\n", (30000 - player.getExp()));
-        } else{
+            printNavigationMenu();
+            command(br.readLine());
+        } else {
             System.out.println("Да начнется финальная битва!");
             battlefield.fight(createBoss(), player, new FightCallBack(){
                 @Override
