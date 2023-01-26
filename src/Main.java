@@ -22,7 +22,7 @@ public class Main {
     private static void command(String word) throws IOException {
         if(player == null){
             player = new Hero(word, 100, 0, 20, 0,10);
-            System.out.println(String.format("Появился герой по имени %s, готовый защищать обычных людей от монстров", word));
+            System.out.printf("Появился герой по имени %s, готовый защищать обычных людей от монстров\n", word);
             printNavigationMenu();
             command(br.readLine());
         }
@@ -55,7 +55,7 @@ public class Main {
 
     private static void startFinalFight() {
         if(player.getExp() <= 20000){
-            System.out.println("Вам не хватает опыта, потренеруйтесь еще.");
+            System.out.println("Вам не хватает опыта, потренируйтесь еще.");
             System.out.printf("Осталось набрать %d ед. опыта\n", (30000 - player.getExp()));
         } else{
             System.out.println("Да начнется финальная битва!");
@@ -71,7 +71,7 @@ public class Main {
                     System.out.println("Конец игры. И спокойствия на этой земле еще долго не будет... Когда же придет другой герой, чтобы нас спасти?");
                     System.exit(1);
                 }
-            });;
+            });
         }
     }
 
@@ -184,7 +184,7 @@ public class Main {
         battlefield.fight(createMonster(), player, new FightCallBack(){
             @Override
             public void fightWin(){
-                System.out.println(String.format("Вы победили! Теперь у вас %d золота и %d опыта", player.getGold(), player.getExp()));
+                System.out.printf("Вы победили! Теперь у вас %d золота и %d опыта\n", player.getGold(), player.getExp());
                 System.out.println("Хотите продолжить поход? (да/нет)");
                 try {
                     command(br.readLine());
