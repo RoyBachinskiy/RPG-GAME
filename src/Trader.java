@@ -117,7 +117,7 @@ public class Trader {
 
     private int armor1Selling(Goods good, Hero hero){
         if((good == Goods.ARMOR_LVL1) && (hero.getGold() >= 50)) {
-            if(!Armor1IsBought) {
+            if(Armor1IsBought) {
                 System.out.println("Вы не можете купить броню 1-го уровня, т.к. она уже у вас есть.");
                 return 0;
             }
@@ -137,7 +137,7 @@ public class Trader {
 
     private int armor2Selling(Goods good, Hero hero){
         if((good == Goods.ARMOR_LVL2) && (hero.getGold() >= 200) && (hero.getExp() >= 5000)){
-            if(!Armor2IsBought) {
+            if(Armor2IsBought) {
                 System.out.println("Вы не можете купить броню 2-го уровня, т.к. она уже у вас есть.");
                 return 0;
             }
@@ -157,7 +157,7 @@ public class Trader {
 
     private int armor3Selling(Goods good, Hero hero){
         if((good == Goods.ARMOR_LVL3) && (hero.getGold() >= 500) && (hero.getExp() >= 15000)){
-            if(!Armor3IsBought) {
+            if(Armor3IsBought) {
                 System.out.println("Вы не можете купить броню 3-го уровня, т.к. она уже у вас есть.");
                 return 0;
             }
@@ -177,7 +177,7 @@ public class Trader {
 
     private int swordSelling(Goods good, Hero hero){
         if((good == Goods.SWORD) && (hero.getGold() >= 40)) {
-            if(!SwordIsBought) {
+            if(SwordIsBought) {
                 System.out.println("Вы не можете купить меч, т.к. она уже у вас есть.");
                 return 0;
             }
@@ -195,7 +195,7 @@ public class Trader {
 
     private int axeSelling(Goods good, Hero hero){
         if((good == Goods.AXE) && (hero.getGold() >= 240) && (hero.getExp() >= 5000)){
-            if(!AxeIsBought) {
+            if(AxeIsBought) {
                 System.out.println("Вы не можете купить топор, т.к. она уже у вас есть.");
                 return 0;
             }
@@ -213,7 +213,7 @@ public class Trader {
 
     private int katanaSelling(Goods good, Hero hero){
         if((good == Goods.KATANA) && (hero.getGold() >= 600) && (hero.getExp() >= 12000)){
-            if(!KatanaIsBought) {
+            if(KatanaIsBought) {
                 System.out.println("Вы не можете купить катану, т.к. она уже у вас есть.");
                 return 0;
             }
