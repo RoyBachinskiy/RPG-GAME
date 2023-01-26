@@ -35,7 +35,7 @@ public class Main {
                 startTrading();
                 break;
             }
-            case "3":
+            case "4":
                 System.exit(1);
             case "да":
                 command("1");
@@ -45,8 +45,38 @@ public class Main {
                 command(br.readLine());
                 break;
             }
+            case "3":{
+                startFinalFight();
+                break;
+            }
         }
 
+    }
+
+    private static void startFinalFight() {
+        if(player.getExp() <= 20000){
+            System.out.println("Вам не хватает опыта, потренеруйтесь еще.");
+            System.out.printf("Осталось набрать %d ед. опыта\n", (30000 - player.getExp()));
+        } else{
+            System.out.println("Да начнется финальная битва!");
+            battlefield.fight(createBoss(), player, new FightCallBack(){
+                @Override
+                public void fightWin(){
+                    System.out.println("Вы победили! И теперь наконец настанет мир!");
+                    System.exit(1);
+                }
+
+                @Override
+                public void fightLost(){
+                    System.out.println("Конец игры. И спокойствия на этой земле еще долго не будет... Когда же придет другой герой, чтобы нас спасти?");
+                    System.exit(1);
+                }
+            });;
+        }
+    }
+
+    private static Creature createBoss() {
+        return new Dragon("Дракон", 2000, 1000000, 50, 100000, 50);
     }
 
     private static void startTrading() throws IOException{
@@ -205,7 +235,8 @@ public class Main {
         System.out.println("Куда идём?");
         System.out.println("1. В лес");
         System.out.println("2. К торговцу");
-        System.out.println("3. Выход из игры");
+        System.out.println("3. К дракону");
+        System.out.println("4. Выход из игры");
     }
     interface FightCallBack{
         void fightWin();
