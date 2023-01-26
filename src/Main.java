@@ -27,14 +27,14 @@ public class Main {
             command(br.readLine());
         }
         switch(word){
-            case "1":
+            case "1": {
                 startFight();
-            case "2": {
-                System.out.println("Торговец еще не вышел на работу.");
-                command(br.readLine());
-                //startTrading();
-            }
                 break;
+            }
+            case "2": {
+                startTrading();
+                break;
+            }
             case "3":
                 System.exit(1);
             case "да":
@@ -43,6 +43,7 @@ public class Main {
             case "нет":{
                 printNavigationMenu();
                 command(br.readLine());
+                break;
             }
         }
 
@@ -56,74 +57,95 @@ public class Main {
     private static void commandTrading (Trader trader, String word) throws IOException {
         if (player.getExp() < 5000) {
             switch (word) {
-                case "1":
+                case "1": {
                     trader.sell(Trader.Goods.HEALTHPOTION_LVL1, player);
                     startTrading();
                     break;
-                case "2":
+                }
+                case "2": {
                     trader.sell(Trader.Goods.ARMOR_LVL1, player);
                     startTrading();
                     break;
-                case "3":
+                }
+                case "3": {
                     trader.sell(Trader.Goods.SWORD, player);
                     startTrading();
                     break;
-                case "4":
+                }
+                case "4": {
+                    printNavigationMenu();
                     command(br.readLine());
+                    break;
+                }
             }
         }
         else if ((player.getExp() >= 5000) && (player.getExp() < 10000)){
             switch (word) {
-                case "1":
+                case "1": {
                     trader.sell(Trader.Goods.HEALTHPOTION_LVL2, player);
                     startTrading();
                     break;
-                case "2":
+                }
+                case "2": {
                     trader.sell(Trader.Goods.ARMOR_LVL2, player);
                     startTrading();
                     break;
-                case "3":
+                }
+                case "3": {
                     trader.sell(Trader.Goods.AXE, player);
                     startTrading();
                     break;
-                case "4":
+                }
+                case "4": {
+                    printNavigationMenu();
                     command(br.readLine());
+                    break;
+                }
             }
         }
         else {
             switch (word) {
-                case "1":
+                case "1": {
                     trader.sell(Trader.Goods.HEALTHPOTION_LVL3, player);
+                    startTrading();
                     break;
-                case "2":
+                }
+                case "2": {
                     trader.sell(Trader.Goods.ARMOR_LVL3, player);
+                    startTrading();
                     break;
-                case "3":
+                }
+                case "3": {
                     trader.sell(Trader.Goods.KATANA, player);
+                    startTrading();
                     break;
-                case "4":
+                }
+                case "4": {
+                    printNavigationMenu();
                     command(br.readLine());
+                    break;
+                }
             }
         }
     }
 
     private static void printTradingList() {
-        System.out.printf("У вас %d здоровья, %d ед. атаки, %d ед. ловкости \n", player.getHealth(), player.getStrength(), player.getAgility());
+        System.out.printf("У вас %d/%d здоровья, %d ед. атаки, %d ед. ловкости \n", player.getHealth(), player.startHealth, player.getStrength(), player.getAgility());
         System.out.printf("%d ед. золота и %d ед. опыта\n", player.getGold(), player.getExp());
         if(player.getExp() < 5000){
-            System.out.println("1. Зелье здоровье 1-го уровня (+20 ед. здоровья)");
-            System.out.println("2. Броня 1-го уровня (увеличение здоровья в 2 раза)");
-            System.out.println("3. Меч (+15 ед. к атаке и +10 к ловкости)");
+            System.out.println("1. Зелье здоровье 1-го уровня (20 ед. золота) -> +20 ед. здоровья");
+            System.out.println("2. Броня 1-го уровня (50 ед. золота) -> увеличение здоровья в 2 раза");
+            System.out.println("3. Меч (40 ед. золота) -> +15 ед. к атаке и +10 к ловкости");
         }
         else if ((player.getExp() >= 5000) && (player.getExp() < 10000)){
-            System.out.println("1. Зелье здоровье 2-го уровня (+50 ед. здоровья)");
-            System.out.println("2. Броня 2-го уровня (увеличение здоровья в 2 раза)");
-            System.out.println("3. Топор (+20 ед. к атаке и +15 к ловкости)");
+            System.out.println("1. Зелье здоровье 2-го уровня (60 ед. золота, 1000 ед. опыта) -> +50 ед. здоровья");
+            System.out.println("2. Броня 2-го уровня (200 ед. золота, 5000 ед. опыта) -> увеличение здоровья в 2 раза");
+            System.out.println("3. Топор (240 ед. золота, 5000 ед. опыта) -> +20 ед. к атаке и +15 к ловкости");
         }
         else {
-            System.out.println("1. Зелье здоровье 3-го уровня (+90 ед. здоровья)");
-            System.out.println("2. Броня 3-го уровня (увеличение здоровья в 2 раза)");
-            System.out.println("3. Катана (+20 ед. к атаке и +15 к ловкости)");
+            System.out.println("1. Зелье здоровье 3-го уровня (150 ед. золота, 8000 ед. опыта) -> +90 ед. здоровья");
+            System.out.println("2. Броня 3-го уровня (500 ед. золота, 15000 ед. опыта) -> увеличение здоровья в 2 раза");
+            System.out.println("3. Катана (600 ед. золота, 12000 ед. опыта) -> +20 ед. к атаке и +15 к ловкости");
         }
         System.out.println("4. Выйти из лавки торговца");
     }
@@ -143,7 +165,7 @@ public class Main {
 
             @Override
             public void fightLost(){
-                System.out.println("Вы проиграли, не отчаивайтесь.");
+                System.out.println("Конец игры.");
             }
         });
     }
