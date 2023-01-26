@@ -171,10 +171,34 @@ public class Main {
     }
 
     private static Creature createMonster() {
+        if (player.getExp() < 5000){
+            return createMonsterLvl1();
+        } else if((player.getExp() >= 5000) && (player.getExp() < 10000))
+            return createMonsterLvl2();
+        else return createMonsterLvl3();
+    }
+
+    private static Creature createMonsterLvl1() {
         int random = (int) (Math.random() * 10);
         if (random % 2 == 0){
-            return new Skeleton("Скелет", 100, 200, 15, 500, 12);
-        } else return new Goblin("Гоблин", 100, 400, 20, 600, 14);
+            return new Skeleton("Скелет", 100, 50, 10, 100, 12);
+        } else return new Goblin("Гоблин", 100, 75, 15, 200, 14);
+    }
+    private static Creature createMonsterLvl2() {
+        int random = (int) (Math.random() * 10);
+        if (random % 4 == 0){
+            return new Skeleton("Скелет", 170, 100, 16, 500, 14);
+        } else if(random % 4 == 1) return new Goblin("Гоблин", 180, 150, 17, 600, 16);
+        else if (random % 4 == 2) return new Orc("Орк", 200, 125, 20, 500, 20);
+        else return new Spider("Паук", 250, 150, 22, 600,22);
+    }
+    private static Creature createMonsterLvl3() {
+        int random = (int) (Math.random() * 10);
+        if (random % 4 == 0){
+            return new Orc("Орк", 220, 150, 18, 600, 21);
+        } else if (random % 4 == 1) return new Spider("Паук", 230, 180, 20, 700, 24);
+        else if (random % 4 == 2) return new Troll("Тролль", 900, 300, 25, 1500, 40);
+        else return new Urukhai("Урук-хай", 400, 250, 36, 1000, 30);
     }
 
     private static void printNavigationMenu() {
